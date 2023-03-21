@@ -1,0 +1,17 @@
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.exe
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.deps.json
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.runtimeconfig.json
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.dll
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.pdb
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.AssemblyReference.cache
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto_SO.Form1.resources
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.GenerateResource.cache
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.AssemblyInfoInputs.cache
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.AssemblyInfo.cs
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.CoreCompileInputs.cache
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.dll
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\refint\Proyecto SO.dll
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.pdb
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.genruntimeconfig.cache
+C:\Users\kikep\source\repos\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\ref\Proyecto SO.dll
