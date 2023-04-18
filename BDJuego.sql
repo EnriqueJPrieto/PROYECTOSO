@@ -8,7 +8,7 @@ USE Juego;
 create table Jugador(
 	ID int,
 	nombre varchar(20),
-	contraseña varchar(20),
+	contrasena varchar(20),
 	PRIMARY KEY(ID)
 );
 	
@@ -47,25 +47,25 @@ INSERT INTO Jugador VALUES (9, 'Lucia', 'password10');
 
 
 INSERT INTO Partida VALUES (1, 'Juan', '2022-03-01', 2);
-INSERT INTO Partida VALUES (2, 'Pedro', '2022-03-02', 4);
-INSERT INTO Partida VALUES (3, 'Sofia', '2022-03-03', 2);
-INSERT INTO Partida VALUES (4, 'David', '2022-03-04', 3);
-INSERT INTO Partida VALUES (5, 'Maria', '2022-03-05', 4);
-INSERT INTO Partida VALUES (6, 'Lucia', '2022-03-06', 2);
-INSERT INTO Partida VALUES (7, 'Diego', '2022-03-07', 3);
-INSERT INTO Partida VALUES (8, 'Laura', '2022-03-08', 2);
-INSERT INTO Partida VALUES (9, 'Luis', '2022-03-09', 4);
-INSERT INTO Partida VALUES (10, 'Ana', '2022-03-10', 3);
-INSERT INTO Partida VALUES (11, 'Juan', '2022-03-11', 2);
-INSERT INTO Partida VALUES (12, 'Pedro', '2022-03-12', 4);
-INSERT INTO Partida VALUES (13, 'Sofia', '2022-03-13', 2);
-INSERT INTO Partida VALUES (14, 'David', '2022-03-14', 3);
-INSERT INTO Partida VALUES (15, 'Maria', '2022-03-15', 4);
-INSERT INTO Partida VALUES (16, 'Lucia', '2022-03-16', 2);
-INSERT INTO Partida VALUES (17, 'Diego', '2022-03-17', 3);
-INSERT INTO Partida VALUES (18, 'Laura', '2022-03-18', 2);
-INSERT INTO Partida VALUES (19, 'Luis', '2022-03-19', 4);
-INSERT INTO Partida VALUES (20, 'Ana', '2022-03-20', 3);
+INSERT INTO Partida VALUES (2, 'Pedro', '2022-03-01', 4);
+INSERT INTO Partida VALUES (3, 'Sofia', '2022-03-01', 2);
+INSERT INTO Partida VALUES (4, 'David', '2022-03-01', 3);
+INSERT INTO Partida VALUES (5, 'Maria', '2022-03-01', 4);
+INSERT INTO Partida VALUES (6, 'Lucia', '2022-03-01', 2);
+INSERT INTO Partida VALUES (7, 'Diego', '2022-03-01', 3);
+INSERT INTO Partida VALUES (8, 'Laura', '2022-03-01', 2);
+INSERT INTO Partida VALUES (9, 'Luis', '2022-03-01', 4);
+INSERT INTO Partida VALUES (10, 'Ana', '2022-03-1', 3);
+INSERT INTO Partida VALUES (11, 'Juan', '2022-03-1', 2);
+INSERT INTO Partida VALUES (12, 'Pedro', '2022-03-1', 4);
+INSERT INTO Partida VALUES (13, 'Sofia', '2022-03-1', 2);
+INSERT INTO Partida VALUES (14, 'David', '2022-03-1', 3);
+INSERT INTO Partida VALUES (15, 'Maria', '2022-03-1', 4);
+INSERT INTO Partida VALUES (16, 'Lucia', '2022-03-1', 2);
+INSERT INTO Partida VALUES (17, 'Diego', '2022-03-1', 3);
+INSERT INTO Partida VALUES (18, 'Laura', '2022-03-1', 2);
+INSERT INTO Partida VALUES (19, 'Luis', '2022-03-1', 4);
+INSERT INTO Partida VALUES (20, 'Ana', '2022-03-1', 3);
 
 /* los colores estan puestos de forma numerica, tenemos intencion de cambiar esto en el futuro */
 INSERT INTO Participación VALUES (1, 2, 1);
