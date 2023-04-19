@@ -7,7 +7,7 @@ VERIFICADO POR: Prieto Bailo Enrique José
 
 VIDEO POR:      Castellon Aguilar Cristopher 
 
-LINK VIDEO: 
+LINK VIDEO: https://youtu.be/Z-uCbVzxjNI
 
 PRIMERA VERSION:
 ----------------------------------------------------------------------------------------------------------
