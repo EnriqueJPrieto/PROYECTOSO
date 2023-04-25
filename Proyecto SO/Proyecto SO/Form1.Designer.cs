@@ -40,11 +40,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
             this.CONNECT = new System.Windows.Forms.Button();
             this.CONECTADOS = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+=======
+>>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
             this.SuspendLayout();
             // 
             // LOGIN
@@ -155,6 +158,7 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "PARAMETRO";
             // 
+<<<<<<< HEAD
             // CONNECT
             // 
             this.CONNECT.Location = new System.Drawing.Point(369, 34);
@@ -195,16 +199,22 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "label4";
             // 
+=======
+>>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.CONECTADOS);
             this.Controls.Add(this.CONNECT);
+=======
+            this.ClientSize = new System.Drawing.Size(800, 450);
+>>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -220,7 +230,10 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+=======
+>>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,9 +253,12 @@
         private Label label1;
         private Label label2;
         private Label label3;
+<<<<<<< HEAD
         private Button CONNECT;
         private Button CONECTADOS;
         private DataGridView dataGridView1;
         private Label label4;
+=======
+>>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
     }
 }

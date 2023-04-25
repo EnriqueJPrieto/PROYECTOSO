@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "ppc3wNqEg05aLoL9HyNvrqfP/VIr+xL6BaAGs+MYmM7Fu5TTUqgpbpMjBZ/lDr63x7XM6VFPekLN5EGyXQiPlA==",
   "success": true,
   "projectFilePath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+=======
+  "dgSpecHash": "gnqrNpWmPDTIkNM5Ads1sNXi6RzuYVBykoiJXP+wuRUXdgsIEI+3rU47uCauv0SWnjCrOjG63d3MDIjOenbNuA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+>>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
   "expectedPackageFiles": [],
   "logs": []
 }
