@@ -7,7 +7,7 @@ VERIFICADO POR: Yébenes García Rubén
 
 VIDEO POR:      Prieto Bailo Enrique José
 
-LINK VIDEO:
+LINK VIDEO:     
 
 VERSION 2:
 ----------------------------------------------------
@@ -18,7 +18,7 @@ VERIFICADO POR: Prieto Bailo Enrique José
 
 VIDEO POR:      Castellon Aguilar Cristopher
 
-LINK VIDEO:
+LINK VIDEO:     https://youtu.be/Z-uCbVzxjNI
 
 VERSION 1:
 ----------------------------------------------------
@@ -29,4 +29,4 @@ VERIFICADO POR: Castellon Aguilar Cristopher
 
 VIDEO POR:      Yébenes García Rubén
 
-LINK VIDEO:
+LINK VIDEO:     https://drive.google.com/file/d/1ejmwK2fNMldgwXfLJOAEjA2ch9rWHFlg/view?usp=share_link
