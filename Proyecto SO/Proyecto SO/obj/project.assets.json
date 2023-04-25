@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 2\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+      "projectUniqueName": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
       "projectName": "Proyecto SO",
-      "projectPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 2\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+      "projectPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
       "packagesPath": "C:\\Users\\kikep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 2\\Proyecto SO\\Proyecto SO\\obj\\",
+      "outputPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kikep\\AppData\\Roaming\\NuGet\\NuGet.Config",
