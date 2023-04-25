@@ -14,8 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Proyecto_SO
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\
-=======
-build_property.ProjectDir = C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA 1\Proyecto SO\Proyecto SO\
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
+build_property.ProjectDir = F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\

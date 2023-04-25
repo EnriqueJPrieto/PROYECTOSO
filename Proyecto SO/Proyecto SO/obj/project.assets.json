@@ -13,19 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+      "projectUniqueName": "F:\\UNI STUFF\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
       "projectName": "Proyecto SO",
-      "projectPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+      "projectPath": "F:\\UNI STUFF\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
       "packagesPath": "C:\\Users\\kikep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
-      "projectName": "Proyecto SO",
-      "projectPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
-      "packagesPath": "C:\\Users\\kikep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\obj\\",
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
+      "outputPath": "F:\\UNI STUFF\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kikep\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -75,5 +67,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché F:\\UNI STUFF\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

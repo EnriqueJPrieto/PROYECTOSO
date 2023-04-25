@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "ppc3wNqEg05aLoL9HyNvrqfP/VIr+xL6BaAGs+MYmM7Fu5TTUqgpbpMjBZ/lDr63x7XM6VFPekLN5EGyXQiPlA==",
+  "dgSpecHash": "WggUgDb8fni2+DuNBAB42Kwnn4Xs6DdgRlCy8e2M5mMkxTRH5viw81IDfPPa9l42GI8RTaJ1qvaArGK4pTMN6g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
-=======
-  "dgSpecHash": "gnqrNpWmPDTIkNM5Ads1sNXi6RzuYVBykoiJXP+wuRUXdgsIEI+3rU47uCauv0SWnjCrOjG63d3MDIjOenbNuA==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
+  "projectFilePath": "F:\\UNI STUFF\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché F:\\UNI STUFF\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -69,3 +69,13 @@ C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\ne
 C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\ref\Proyecto SO.dll
 =======
 >>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.AssemblyReference.cache
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto_SO.Form1.resources
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.GenerateResource.cache
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.GeneratedMSBuildEditorConfig.editorconfig
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.AssemblyInfoInputs.cache
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.AssemblyInfo.cs
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.CoreCompileInputs.cache
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.dll
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\refint\Proyecto SO.dll
+F:\UNI STUFF\SO\PROYECTO\ENTREGA3\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.pdb

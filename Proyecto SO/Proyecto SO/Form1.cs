@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Microsoft.VisualBasic;
 using System.Net;
 using System.Net.Sockets;
@@ -7,24 +6,10 @@ using System.Threading;
 using System.Threading.Tasks;
 
 //los colores son 100% provisionales y se pueden cambiar en cualquier momento, no prestarle demasiada atencion.
-=======
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Net;
-using System.Net.Sockets;
-
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
 namespace Proyecto_SO
 {
     public partial class Form1 : Form
     {
-<<<<<<< HEAD
         Thread atender;
         bool atendiendo = false;
 
@@ -240,27 +225,15 @@ namespace Proyecto_SO
             QUERY3.Visible = false;
             //CONECTADOS.Visible = false;
             DISSCONECT.Visible = false;
-            dataGridView1.ReadOnly= true;
+            dataGridView1.ReadOnly = true;
             //dataGridView1.Visible = false;//si pongo esto luego no puedo hacerlo visible
             CONECTADOS.Visible = false;
             dataGridView1.Columns.Add("NombreConectados", "Conectados");
 
-=======
-        Socket server;
-        public Form1()
-        {
-            InitializeComponent();
-        }
-        
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //hola
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
         }
 
         private void LOGIN_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
 
             string mensaje = "1/" + NOMBRE.Text + "/" + CONTRASEÑA.Text + "/";//no estoy seguro de si hay que poner una barra al final o no (da igual si esta o no)
@@ -269,53 +242,16 @@ namespace Proyecto_SO
 
             if (atendiendo == false)
             {
-                ThreadStart ts = delegate { atenderServidor(); }; 
+                ThreadStart ts = delegate { atenderServidor(); };
                 atender = new Thread(ts);
                 atender.Start();
                 atendiendo = true;
             }
-           
-=======
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);
-                this.BackColor = Color.Green;
-                MessageBox.Show("Conectado");
-                
-                    string mensaje = "1/" + NOMBRE.Text + "/" + CONTRASEÑA.Text;//no estoy seguro de si hay que poner una barra al final o no
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
-
-                    byte[] msg2 = new byte[80];
-                    server.Receive(msg2);
-                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                    if (mensaje[0] == '1')
-                {
-                    MessageBox.Show("Nombre o contraseña incorrectos");
-                }
-                    if (mensaje[0] == '0')
-                {
-                    MessageBox.Show("Bienvenido" + NOMBRE.Text);
-                }
-                this.BackColor = Color.Gray;
-                server.Shutdown(SocketShutdown.Both);
-                server.Close();
-            }
-            catch (SocketException ex)
-            {
-                MessageBox.Show("no ha sido posible conectarse al servidor");
-                return;
-            }
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
         }
 
         private void SIGNIN_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             string mensaje = "2/" + NOMBRE.Text + "/" + CONTRASEÑA.Text;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -327,186 +263,36 @@ namespace Proyecto_SO
                 atender.Start();
                 atendiendo = true;
             }
-           
-=======
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);
-                this.BackColor = Color.Green;
-                MessageBox.Show("Conectado");
-
-                string mensaje = "2/" + NOMBRE.Text + "/" + CONTRASEÑA.Text ;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                if (mensaje[0] == '1')
-                {
-                    MessageBox.Show("Este nombre de usuario ya existe");
-                }
-                if (mensaje[0] == '0')
-                {
-                    MessageBox.Show("Cuenta creada correctamente");
-                }
-                this.BackColor = Color.Gray;
-                server.Shutdown(SocketShutdown.Both);
-                server.Close();
-            }
-            catch (SocketException ex)
-            {
-                MessageBox.Show("no ha sido posible conectarse al servidor");
-                return;
-            }
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
         }
 
         private void QUERY1_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
             string mensaje = "3/" + PARAMETRO.Text;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
-           
-=======
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);
-                this.BackColor = Color.Green;
-                MessageBox.Show("Conectado");
-
-                string mensaje = "3/" + PARAMETRO.Text;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                if (mensaje[0] == '1')
-                {
-                    MessageBox.Show("No hay datos para esta busqueda");
-                }
-                if (mensaje[0] == '0')
-                {
-                    string text = mensaje.Split('/')[0];
-                    MessageBox.Show("Los jugadores que han jugado con " + PARAMETRO.Text + "son: "+ text);
-                }
-                this.BackColor = Color.Gray;
-                server.Shutdown(SocketShutdown.Both);
-                server.Close();
-            }
-            catch (SocketException ex)
-            {
-                MessageBox.Show("no ha sido posible conectarse al servidor");
-                return;
-            }
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
         }
 
         private void QUERY2_Click(object sender, EventArgs e)//el parametro sera un valor del 1 al 5
         {
-<<<<<<< HEAD
 
             string mensaje = "4/" + PARAMETRO.Text;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-            
 
-=======
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);
-                this.BackColor = Color.Green;
-                MessageBox.Show("Conectado");
-
-                string mensaje = "4/" + PARAMETRO.Text;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                if (mensaje[0] == '1')
-                {
-                    MessageBox.Show("No hay datos para esta busqueda");
-                }
-                if (mensaje[0] == '0')
-                {
-                    string text = mensaje.Split('/')[0];
-                    MessageBox.Show("Los jugadores que han ganado con fichas de color " + PARAMETRO.Text + "son: " + text);
-                }
-                this.BackColor = Color.Gray;
-                server.Shutdown(SocketShutdown.Both);
-                server.Close();
-            }
-            catch (SocketException ex)
-            {
-                MessageBox.Show("no ha sido posible conectarse al servidor");
-                return;
-            }
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
         }
 
         private void QUERY3_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
             string mensaje = "5/" + PARAMETRO.Text;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-           
-=======
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);
-                this.BackColor = Color.Green;
-                MessageBox.Show("Conectado");
-
-                string mensaje = "4/" + PARAMETRO.Text;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                if (mensaje[0] == '1')
-                {
-                    MessageBox.Show("No hay datos para esta busqueda");
-                }
-                if (mensaje[0] == '0')
-                {
-                    string text = mensaje.Split('/')[0];
-                    MessageBox.Show("El jugador que mas partidas ha ganado el dia " + PARAMETRO.Text + "Es: " + text);
-                }
-                this.BackColor = Color.Gray;
-                server.Shutdown(SocketShutdown.Both);
-                server.Close();
-            }
-            catch (SocketException ex)
-            {
-                MessageBox.Show("no ha sido posible conectarse al servidor");
-                return;
-            }
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
         }
 
         private void DISSCONECT_Click(object sender, EventArgs e)
@@ -514,19 +300,18 @@ namespace Proyecto_SO
             string mensaje = "0/";
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-<<<<<<< HEAD
             try
             {
                 atender.Abort();
             }
-            catch 
+            catch
             {
                 ThreadAbortException ex;
             }
             this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
-            
+
             this.Close();
         }
 
@@ -539,7 +324,7 @@ namespace Proyecto_SO
 
                 server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 server.Connect(ipep);
-                
+
                 MessageBox.Show("Conectado");
                 DISSCONECT.Visible = true;
             }
@@ -555,17 +340,12 @@ namespace Proyecto_SO
             string mensaje = "6/";
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-           
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //esto aun no lo usamos, quiza mas tarde tendra alguna utilidad
-=======
-            this.BackColor = Color.Gray;
-            server.Shutdown(SocketShutdown.Both);
-            server.Close();
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
         }
     }
 }
