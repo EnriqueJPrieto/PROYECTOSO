@@ -13,19 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+      "projectUniqueName": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA5\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
       "projectName": "Proyecto SO",
-      "projectPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
+      "projectPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA5\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
       "packagesPath": "C:\\Users\\kikep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA3\\Proyecto SO\\Proyecto SO\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
-      "projectName": "Proyecto SO",
-      "projectPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\Proyecto SO.csproj",
-      "packagesPath": "C:\\Users\\kikep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA 1\\Proyecto SO\\Proyecto SO\\obj\\",
->>>>>>> 7e8db6dcc7bbda568b05b0ae6c446ac57b06734d
+      "outputPath": "C:\\Users\\kikep\\Desktop\\SO\\PROYECTO\\ENTREGA5\\Proyecto SO\\Proyecto SO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kikep\\AppData\\Roaming\\NuGet\\NuGet.Config",
