@@ -1,5 +1,17 @@
 VERSION 4:
 ----------------------------------------------------
+GENERADO POR:       Yébenes García Rubén
+
+VERIFICADO POR:     Prieto Bailo Enrique José
+
+VIDEOS POR:         Castellon Aguilar Cristopher
+
+LINK VIDEO:           https://youtu.be/kd_Yu8CqQhk
+
+INTERFAZ GRAFICA:   https://youtu.be/DfzIkQJeD0c
+
+VERSION 4:
+----------------------------------------------------
 GENERADO POR:   Prieto Bailo Enrique José
 
 VERIFICADO POR: Castellon Aguilar Cristopher
