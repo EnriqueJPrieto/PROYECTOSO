@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	memset(&serv_adr, 0, sizeof(serv_adr));
 	serv_adr.sin_family = AF_INET;
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
-	serv_adr.sin_port = htons(9059);//----------------------------------------------------------------------//
+	serv_adr.sin_port = htons(9054);//----------------------------------------------------------------------//
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 	{
 		printf("Error al bind\n");
@@ -124,6 +124,7 @@ void *atenderCliente (void *socket)
 	char J1[20], J2[20], J3[20], J4[20];//seguramente esto no hace falta
 	int socketJ;
 	char chat[200];
+	int CT = 3;
 	
 	
 
@@ -256,7 +257,7 @@ void *atenderCliente (void *socket)
 			while (n < 5)
 			{
 				write(listaP.partidas[partida].jugadores[n].socket,notificacion,strlen(notificacion));
-				printf("SOCKET: %d\n", sockets[listaP.partidas[partida].jugadores[n].socket]);
+				
 				n++;
 			}
 			
@@ -330,7 +331,85 @@ void *atenderCliente (void *socket)
 				n++;
 			}
 		}
-
+		else if (codigo == 10)
+		{//10/npartida
+			
+			p = strtok(NULL, "/");
+			partida = atoi(p);
+			
+			sprintf(notificacion, "10/0");
+			
+			for (j = 0; j < 4; j++)
+			{
+				write(listaP.partidas[partida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+		}
+		else if (codigo == 11)
+		{//11/partida/Nºficha/Nºposicion/casa/token
+			p = strtok(NULL, "/");
+			partida = atoi(p);
+			
+			
+			p = strtok(NULL, "/");
+			int equipo = atoi(p);
+	
+			if (equipo == 99)
+			{
+				sprintf(notificacion, "11/99/\n");
+				printf("Notificacion: %s\n", notificacion);
+				for (j = 0; j<4; j++)
+				{
+					write(listaP.partidas[partida].jugadores[j].socket, notificacion, strlen(notificacion));
+				}
+			}
+			else{
+				p = strtok(NULL, "/");
+				int ficha = atoi(p);
+				
+				p = strtok(NULL, "/");
+				int posicion = atoi(p);
+				
+				
+				p = strtok(NULL, "/");
+				char casa[6];
+				strcpy(casa, p);
+				
+				p = strtok(NULL, "/");
+				CT = atoi(p);
+				
+				p = strtok(NULL, "/");
+				int numD = atoi(p);
+				
+				
+				if (CT < 3)
+				{
+					CT++;
+				}
+				else 
+				{
+					CT = 0;
+				}
+				sprintf(notificacion, "11/%d/%d/%d/%s/%d/%d",equipo, ficha, posicion, casa, CT, numD);
+				printf("Notificacion: %s\n", notificacion);
+				for (j = 0; j<4; j++)
+				{
+					write(listaP.partidas[partida].jugadores[j].socket, notificacion, strlen(notificacion));
+				}
+			}
+			
+		}
+		else if (codigo == 12)
+		{
+			p = strtok(NULL, "/");
+			
+			strcpy(nombre, p);
+			
+			DarseDeBaja(nombre, respuesta);
+			
+			
+			write(sock_conn,respuesta,strlen(respuesta));
+			
+		}
 		if ((codigo == 0||codigo == 1 || codigo ==2))//0 es Desconectar, 1 es conectar, 2 es registrarse
 		{
 			
@@ -353,8 +432,8 @@ void *atenderCliente (void *socket)
 	
 }
 
-void LogIn(char nombre[20], char contrasena[20], char respuesta[512])//esto funciona.
-{
+void LogIn(char nombre[20], char contrasena[20], char respuesta[512])
+{//recibe usuario y contraseña, hace una query en una base de datos, en caso de encontrar respuesta, permite que el usuario se conecte.
 	MYSQL *conn;
 	int err;
 	MYSQL_RES *resultado;
@@ -394,7 +473,7 @@ void LogIn(char nombre[20], char contrasena[20], char respuesta[512])//esto func
 	//hasta aqui funciona
 	
 	
-	err=mysql_query (conn, Consulta);//CRASHEA AQUI 
+	err=mysql_query (conn, Consulta);
 	
 	
 	if (err!=0) {
@@ -416,14 +495,35 @@ void LogIn(char nombre[20], char contrasena[20], char respuesta[512])//esto func
 		sprintf(respuesta, "1/0");
 	}
 }
-void SignIn(char Nombre[20], char contrasena[20], char respuesta[512])//esto no funciona at all xd
-{
+void SignIn(char Nombre[20], char contrasena[20], char respuesta[512])
+{//recibe un usuario y contrasña, crea una cuenta nueva en la base de datos y permite que el usuario se conecte
 	MYSQL *conn;
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	
-	ConectarSQL;
+	
+	conn = mysql_init(NULL);
+	if (conn==NULL)
+	{
+		printf ("Error al crear la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	if (conn==NULL)
+	{
+		printf ("Error al inicializar la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	err=mysql_query(conn, "use Juego;");//"use database"
+	if (err!=0)
+	{
+		printf ("Error al acceder a la base de datos %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}	
 		
 	char UserName[20];
 	char consulta[512];
@@ -465,7 +565,7 @@ void SignIn(char Nombre[20], char contrasena[20], char respuesta[512])//esto no 
 		resultado = mysql_store_result (conn);
 		row = mysql_fetch_row (resultado);
 		int idmax = atoi(row[0]);
-		
+		idmax++;
 		//hasta aqui funciona
 		
 		
@@ -499,21 +599,42 @@ void SignIn(char Nombre[20], char contrasena[20], char respuesta[512])//esto no 
 	
 }
 
-void JugadoresQueJueganCon(char nombre[20], char respuesta[512])//con el numbre de un jugador te devuelve los que han jugado con el.
-{//server side esto funciona perfectamente, hay que arreglar en el cliente
+void JugadoresQueJueganCon(char nombre[20], char respuesta[512])
+{//recibe un usuario y hace una query para ver quien ha jugado con el y guarda esta informacion en "respuesta"
 	MYSQL *conn;
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	
-	ConectarSQL;
+	
+	conn = mysql_init(NULL);
+	if (conn==NULL)
+	{
+		printf ("Error al crear la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	if (conn==NULL)
+	{
+		printf ("Error al inicializar la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	err=mysql_query(conn, "use Juego;");//"use database"
+	if (err!=0)
+	{
+		printf ("Error al acceder a la base de datos %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}	
 	
 	char nombres[200];
 	char consulta[500];
 	
-	strcpy (consulta, "SELECT DISTINCT Jugador.Nombre FROM (Jugador, Partida, Participación) WHERE Partida.id in (SELECT Partida.id From (Jugador, Partida, Participación) WHERE Jugador.Nombre = '");
+	strcpy (consulta, "SELECT DISTINCT Jugador.Nombre FROM (Jugador, Partida, Participacion) WHERE Partida.id in (SELECT Partida.id From (Jugador, Partida, Participacion) WHERE Jugador.Nombre = '");
 	strcat (consulta, nombre);
-	strcat (consulta, "'AND Jugador.ID = Participación.ID_J AND Participación.ID_P = Partida.ID) AND Partida.ID = Participación.ID_P AND Participación.ID_J = Jugador.ID AND Jugador.Nombre NOT IN('");
+	strcat (consulta, "'AND Jugador.ID = Participacion.ID_J AND Participacion.ID_P = Partida.ID) AND Partida.ID = Participacion.ID_P AND Participacion.ID_J = Jugador.ID AND Jugador.Nombre NOT IN('");
 	strcat (consulta, nombre);
 	strcat (consulta, "');");
 	err=mysql_query (conn, consulta); 
@@ -547,22 +668,43 @@ void JugadoresQueJueganCon(char nombre[20], char respuesta[512])//con el numbre 
 	}
 }
 
-void GanadoresConFichasDeColor(char color[20], char respuesta[512])//con el color de una ficha te dice que jugadores han ganado usandola
-{//server side funciona perfectamente, arreglarlo en el cliente
+void GanadoresConFichasDeColor(char color[20], char respuesta[512])
+{//recibe un color (numero) y hace una query para ver quien ha ganado con ese color, guarda esta informacion en "respuesta"
 	MYSQL *conn;
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	
-	ConectarSQL;
+	
+	conn = mysql_init(NULL);
+	if (conn==NULL)
+	{
+		printf ("Error al crear la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	if (conn==NULL)
+	{
+		printf ("Error al inicializar la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	err=mysql_query(conn, "use Juego;");//"use database"
+	if (err!=0)
+	{
+		printf ("Error al acceder a la base de datos %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}	
 	
 	char nombres[200];
 	char consulta[500];
 	
 	
-	strcpy (consulta,"SELECT Partida.ganador FROM Partida,Participación WHERE Participación.Color = '");
+	strcpy (consulta,"SELECT Partida.ganador FROM Partida,Participacion WHERE Participacion.Color = '");
 	strcat (consulta, color);
-	strcat (consulta,"'AND Partida.ID = Participación.ID_P");
+	strcat (consulta,"'AND Partida.ID = Participacion.ID_P");
 	err=mysql_query (conn, consulta);
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n",
@@ -591,15 +733,83 @@ void GanadoresConFichasDeColor(char color[20], char respuesta[512])//con el colo
 		sprintf(respuesta, "4/0/%s", nombres);// le envia al cliente los nombres, el cliente tiene que saber que hacer con ellos.
 	}
 }
-void JugadoresMasVictorias(char fecha[20],char respuesta[512])//con una fecha, te dice que jugador ha ganado mas partidas
-{//no estoy seguro de que esto funcione 100%, habria que modificar la base de datos para ver
+void DarseDeBaja(char nombre[20], char respuesta[512])
+{//recibe un nombre y da de baja(elimina) la cuenta de la base de datos
+	MYSQL *conn;
+	int err;
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char UserName[20];
+	char Consulta[512];
+	
+	conn = mysql_init(NULL);
+	if (conn==NULL)
+	{
+		printf ("Error al crear la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	if (conn==NULL)
+	{
+		printf ("Error al inicializar la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	err=mysql_query(conn, "use Juego;");//"use database"
+	if (err!=0)
+	{
+		printf ("Error al acceder a la base de datos %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}	
+	
+	strcpy(Consulta, "DELETE FROM Jugador WHERE Nombre = '");
+	strcat(Consulta, nombre);
+	strcat(Consulta, "'");
+	
+	err=mysql_query (conn, Consulta);
+	
+	
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
 
+	printf ("Cuenta %s Eliminada", nombre);
+	sprintf(respuesta, "12/0");	
+
+}
+void JugadoresMasVictorias(char fecha[20],char respuesta[512])
+{//recibe una fecha y hace una query para ver quien(es) han ganado mas partidas este dia, guarda esta informacion en "respuesta"
 	MYSQL *conn;
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	
-	ConectarSQL;
+	
+	conn = mysql_init(NULL);
+	if (conn==NULL)
+	{
+		printf ("Error al crear la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	if (conn==NULL)
+	{
+		printf ("Error al inicializar la conexion: %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	err=mysql_query(conn, "use Juego;");//"use database"
+	if (err!=0)
+	{
+		printf ("Error al acceder a la base de datos %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}	
 	
 	
 	char nombres[200];
@@ -642,7 +852,7 @@ void JugadoresMasVictorias(char fecha[20],char respuesta[512])//con una fecha, t
 
 
 int Conectar (lConectados *lista, char Nombre[20], int socket)
-{//añade un cliente a la lista de conectados
+{//recibe nombre y socket, añade el nuevo cliente a la lista, devuelve 0 si todo okay, -1 si la lista de clientes esta llena
 	if (lista->num == 100)
 	{
 		return -1;
@@ -657,7 +867,7 @@ int Conectar (lConectados *lista, char Nombre[20], int socket)
 }
 
 int Desconectar (lConectados *lista, char Nombre[20])
-{//elimina un cliente de la lista de conectados
+{//recibe un nombre y lo elimina de la lista de conectados
 	int posicion = PosicionCliente(lista, Nombre);
 	if (posicion == -1)
 	{
@@ -675,8 +885,8 @@ int Desconectar (lConectados *lista, char Nombre[20])
 	}
 }
 
-int PosicionCliente (lConectados *lista, char nombre[20])//ListaConectados busca a nombre y devuelve el socket
-{//indica donde se ubica un cliente determinado
+int PosicionCliente (lConectados *lista, char nombre[20])
+{//recibe un nombre, lo busca en la lista de conectados y devuelve su posicion en la lista
 	int i=0;
 	int encontrado = 0;
 	while (i<lista->num && !encontrado)
@@ -696,9 +906,9 @@ int PosicionCliente (lConectados *lista, char nombre[20])//ListaConectados busca
 		return -1;
 }
 void ListaConectados(lConectados *lista, char conectados[512])
-{
+{//guarda en "conectados" la lista de personas que hay conectadas
 	int i;
-	sprintf(conectados, "%d", lista->num)	;
+	sprintf(conectados, "%d", lista->num);
 	
 	for (i=0;i<lista->num;i++)
 	{
@@ -708,42 +918,9 @@ void ListaConectados(lConectados *lista, char conectados[512])
 }
 
 
-void ConectarSQL()
-{
 
-	MYSQL *conn;
-	int err;
-	MYSQL_RES *resultado;
-	MYSQL_ROW row;
-	
-	char UserName[20];
-	char Consulta[512];
-	
-	conn = mysql_init(NULL);
-	if (conn==NULL)
-	{
-		printf ("Error al crear la conexion: %u %s\n",
-		mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
-	if (conn==NULL)
-	{
-		printf ("Error al inicializar la conexion: %u %s\n",
-		mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-	err=mysql_query(conn, "use Juego;");//"use database"
-	if (err!=0)
-	{
-		printf ("Error al acceder a la base de datos %u %s\n",
-		mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}	
-}
-
-int AgregarJugador(lPartidas *lp,lConectados *lc, char invitados[80])//hay que invitar a 4 players a la vez
-{
+int AgregarJugador(lPartidas *lp,lConectados *lc, char invitados[80])
+{//recibe 4 jugadores, y los agrega a una partida, devuelve el numero de la partida
 	
 	int n = 0;
 	int j = 0;
@@ -775,12 +952,12 @@ int AgregarJugador(lPartidas *lp,lConectados *lc, char invitados[80])//hay que i
 			int z = PosicionCliente(lc, p);
 			
 			lp->partidas[n].jugadores[j].socket = lc->conectados[z].socket;
-			printf("socket de %s es %d\n", p, lc->conectados[z].socket);//useful
+			printf("socket de %s es %d\n", p, lc->conectados[z].socket);
 			p = strtok(NULL, "-");
 			
 			j++;
 		}
-		 //?
+		 
 		return n;
 	}
 	else 
@@ -791,7 +968,7 @@ int AgregarJugador(lPartidas *lp,lConectados *lc, char invitados[80])//hay que i
 }
  
 int BuscarPartidas(lPartidas *l) 
-{
+{//encuentra y devuelve el numero de la primera partida vacia que encuentre
 	for (int i = 0; i < 500; i++) 
 	{
 		if (l->partidas[i].ocupado == 0) 
@@ -803,7 +980,7 @@ int BuscarPartidas(lPartidas *l)
 }
 
 void IniciarPartida(lPartidas *l)
-{
+{//inicializa la lista de partidas
 	int i;
 	for (i = 0; i< 99; i++)
 	{
@@ -812,7 +989,7 @@ void IniciarPartida(lPartidas *l)
 }
 
 int partidaSocket(lPartidas *l, int socket)
-{
+{//encuentra y devuelve el numero de partida de un jugador determinado
 	int encontrado = 0;
 	int j;
 	int i;
@@ -827,6 +1004,6 @@ int partidaSocket(lPartidas *l, int socket)
 	return i;
 }
 
-//botones para login, signin, query 1,2,3 y desconectar (6 botones)
-//textbox para nombre, contrase\ufff1a y para el parametro (3)
+
+
 //-std=c99 `mysql_config --cflags --libs`

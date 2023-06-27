@@ -63,6 +63,12 @@
             this.TXTCHAT = new System.Windows.Forms.TextBox();
             this.BTNinvitar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.BTNSTART = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.DARSEDEBAJA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,7 +192,7 @@
             // 
             // CONECTADOS
             // 
-            this.CONECTADOS.Location = new System.Drawing.Point(369, 237);
+            this.CONECTADOS.Location = new System.Drawing.Point(369, 310);
             this.CONECTADOS.Name = "CONECTADOS";
             this.CONECTADOS.Size = new System.Drawing.Size(75, 23);
             this.CONECTADOS.TabIndex = 13;
@@ -213,26 +219,6 @@
             this.label4.Size = new System.Drawing.Size(38, 15);
             this.label4.TabIndex = 15;
             this.label4.Text = "label4";
-            // 
-            // ACEPTAR
-            // 
-            this.ACEPTAR.Location = new System.Drawing.Point(27, 350);
-            this.ACEPTAR.Name = "ACEPTAR";
-            this.ACEPTAR.Size = new System.Drawing.Size(75, 23);
-            this.ACEPTAR.TabIndex = 16;
-            this.ACEPTAR.Text = "button1";
-            this.ACEPTAR.UseVisualStyleBackColor = true;
-            this.ACEPTAR.Click += new System.EventHandler(this.ACEPTAR_Click);
-            // 
-            // RECHAZAR
-            // 
-            this.RECHAZAR.Location = new System.Drawing.Point(144, 350);
-            this.RECHAZAR.Name = "RECHAZAR";
-            this.RECHAZAR.Size = new System.Drawing.Size(75, 23);
-            this.RECHAZAR.TabIndex = 17;
-            this.RECHAZAR.Text = "button1";
-            this.RECHAZAR.UseVisualStyleBackColor = true;
-            this.RECHAZAR.Click += new System.EventHandler(this.RECHAZAR_Click);
             // 
             // INVITAR
             // 
@@ -388,12 +374,78 @@
             this.label11.TabIndex = 35;
             this.label11.Text = "label11";
             // 
+            // BTNSTART
+            // 
+            this.BTNSTART.Location = new System.Drawing.Point(266, 194);
+            this.BTNSTART.Name = "BTNSTART";
+            this.BTNSTART.Size = new System.Drawing.Size(97, 51);
+            this.BTNSTART.TabIndex = 36;
+            this.BTNSTART.Text = "START";
+            this.BTNSTART.UseVisualStyleBackColor = true;
+            this.BTNSTART.Click += new System.EventHandler(this.BTNSTART_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(263, 40);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(284, 72);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 38;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(270, 100);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(263, 129);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 40;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // DARSEDEBAJA
+            // 
+            this.DARSEDEBAJA.Location = new System.Drawing.Point(369, 237);
+            this.DARSEDEBAJA.Name = "DARSEDEBAJA";
+            this.DARSEDEBAJA.Size = new System.Drawing.Size(75, 23);
+            this.DARSEDEBAJA.TabIndex = 41;
+            this.DARSEDEBAJA.Text = "BORRAR CUENTA";
+            this.DARSEDEBAJA.UseVisualStyleBackColor = true;
+            this.DARSEDEBAJA.Click += new System.EventHandler(this.DARSEDEBAJA_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DARSEDEBAJA);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BTNSTART);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.BTNinvitar);
             this.Controls.Add(this.TXTCHAT);
@@ -475,5 +527,11 @@
         private TextBox TXTCHAT;
         private Button BTNinvitar;
         private Label label11;
+        private Button BTNSTART;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button DARSEDEBAJA;
     }
 }

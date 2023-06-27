@@ -1,38 +1,103 @@
 using Microsoft.VisualBasic;
+
 using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
-/* paleta de colores: 
- * 51, 245, 234//turquesa
- * 33, 166, 255//azul 
- * 0, 34, 230//azul oscuro
- * 87, 13, 252//morado
- * 191, 12, 242//rosa
- */
-/*NOMBRES/PASS
- * Juan/password1
- * Ana/password2
- * Pedro/password3
- * Maria/password4
- */
+
 namespace Proyecto_SO
 {
     public partial class Form1 : Form
     {
+        public string juegoServidor;
+        public int _n;
+        public int res;
+
         Thread atender;
+        Thread atender2;
+
         bool atendiendo = false;
         public static string invitado;
         public int nInvitados = 1;
         public int partida;
+        public string jugadores;
+
         Socket server;
+
+        Form2 f2;
+
         public Form1()
         {
             
             InitializeComponent();
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label1.Visible= false;
+            label2.Visible= false;
+            label3.Visible = false;
+            label4.Visible = false;
+            label5.Visible= false;
+            label6.Visible= false;
+            label7.Visible = false;
+            label8.Visible = false;
+            label9.Visible = false;
+            label10.Visible = false;
+            label11.Visible = false;
+
+            label11.Text = null;
+
+            CHAT1.Visible= false;
+            CHAT2.Visible= false;
+            CHAT3.Visible= false;
+            CHAT4.Visible= false;
+            CHAT5.Visible= false;
+            CHAT6.Visible= false;
+
+            CHAT1.Text = null;
+            CHAT2.Text = null;
+            CHAT3.Text = null;
+            CHAT4.Text = null;
+            CHAT5.Text = null;
+            CHAT6.Text = null;
+            //botones
+            BTNinvitar.Visible= false;
+            LOGIN.Visible = false;
+            SIGNIN.Visible = false;
+            QUERY1.Visible = false;
+            QUERY2.Visible = false;
+            QUERY3.Visible = false;
+            DISSCONECT.Visible = false;
+            CONECTADOS.Visible = false;
+            ACEPTAR.Visible = false;
+            ACEPTAR.Text = "ACEPTAR";
+            RECHAZAR.Visible = false;
+            RECHAZAR.Text = "RECHAZAR";
+            BTNChat.Visible = false;
+            //
+            this.BackColor = Color.FromArgb(33, 166, 255);
+            dataGridView1.BackgroundColor = Color.FromArgb(87, 13, 252);
+            //textbox
+            NOMBRE.Visible = false;
+            CONTRASEÑA.Visible = false;
+            PARAMETRO.Visible = false;
+            TXTCHAT.Visible = false;
+            //datagriedview
+            dataGridView1.ReadOnly= true;
+  
+            dataGridView1.Visible = false;//si pongo esto luego no puedo hacerlo visible
+            //CHECKBOX 
+            INVITAR.Text = "Invitar";
+            INVITAR.Visible = false;
+            
+            dataGridView1.Columns.Add("NombreConectados", "Conectados");
+
+            CONNECT_Click();
         }
         private void atenderServidor()
         {
@@ -44,12 +109,10 @@ namespace Proyecto_SO
                 {
                     server.Receive(msg2);
                 }
-                catch
+                catch (ObjectDisposedException ex)
                 {
-                    ObjectDisposedException ex;
-                    
+                   string err = ex.ToString();
                 }
-
                 string mensaje;
                 string[] trozos;
                 int codigo = 1;
@@ -64,11 +127,10 @@ namespace Proyecto_SO
                     mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
                     trozos = Encoding.ASCII.GetString(msg2).Split('/');
                 }
-                MessageBox.Show(mensaje);
                 switch (codigo)
                 {
                     case 1://log in
-                        if (mensaje == "1/0")
+                        if (mensaje == "1/0")//esto siempre lo hace
                         {
                             this.Invoke(new Action(() =>
                             {
@@ -79,7 +141,6 @@ namespace Proyecto_SO
                                 label3.Visible = true;
                                 label11.Visible = true;
                                 PARAMETRO.Visible = true;
-
                                 //botones
                                 QUERY1.Visible = true;
                                 QUERY2.Visible = true;
@@ -96,7 +157,6 @@ namespace Proyecto_SO
                                 SIGNIN.Visible = false;
                                 label11.Visible = true;
                             }));
-
                         }
                         else
                         {
@@ -105,7 +165,6 @@ namespace Proyecto_SO
                                 label6.Text = "Nombre o contraseña incorrectos";
                                 label6.Visible = true;
                             }));
-
                         }
                         break;
                     case 2://sign in 
@@ -125,7 +184,6 @@ namespace Proyecto_SO
                                     //CONECTADOS.Visible = true;
                                     dataGridView1.Visible = true;
                                 }));
-
                             }
                             if (mensaje == "2/1")
                             {
@@ -134,7 +192,6 @@ namespace Proyecto_SO
                                     label6.Text = "Este usuario ya existe";
                                     label6.Visible = true;
                                 }));
-
                             }
                             break;
                         }
@@ -152,10 +209,9 @@ namespace Proyecto_SO
                                 }
                                 this.Invoke(new Action(() =>
                                 {
-
+                                    label6.Text = resultado;
+                                    label6.Visible = true;
                                 }));
-                                label6.Text = resultado;
-                                label6.Visible = true; 
                             }
                             if (mensaje == "3/1")
                             {
@@ -164,7 +220,6 @@ namespace Proyecto_SO
                                     label6.Text = "No matching data";
                                     label6.Visible = true;
                                 }));
-                               
                             }
                             break;
                         }
@@ -185,7 +240,6 @@ namespace Proyecto_SO
                                     label6.Text = resultado;
                                     label6.Visible = true;
                                 }));
-                              
                             }
                             if (mensaje == "4/1")
                             {
@@ -193,8 +247,7 @@ namespace Proyecto_SO
                                 {
                                     label6.Text = "No matching data";
                                     label6.Visible = true;
-                                }));
-                               
+                                }));   
                             }
                             break;
                         }
@@ -214,11 +267,7 @@ namespace Proyecto_SO
                                 {
                                     label6.Text = resultado;
                                     label6.Visible = true;
-
-
                                 }));
-                                
-
                             }
                             if (mensaje == "5/1")
                             {
@@ -227,8 +276,7 @@ namespace Proyecto_SO
                                     label6.Text = "No matching data";
                                     label6.Visible = true;
 
-                                }));
-                                
+                                }));     
                             }
                             break;
                         }
@@ -241,7 +289,6 @@ namespace Proyecto_SO
                                     dataGridView1.Rows.Clear();
 
                                 }));
-                               
                                 int NumeroConectados = Convert.ToInt32(trozos[2]);
                                 if (NumeroConectados == 0)//esto solo es posible si no hay ningun cliente conectado, lo cual es posible pero como no hay nadie conectado nos da igual, ya que nunca se usara
                                 {
@@ -255,13 +302,11 @@ namespace Proyecto_SO
                                     {
                                         nombre = trozos[i];
                                     }
-                                    catch
+                                    catch (IndexOutOfRangeException ex)
                                     {
-                                        IndexOutOfRangeException ex;
+                                        string err = ex.Message;
                                         nombre = trozos[i];
                                     }
-
-
                                     while (i < NumeroConectados + 2)
                                     {
                                         this.Invoke(new Action(() =>
@@ -270,34 +315,27 @@ namespace Proyecto_SO
                                         }));
                                         
                                         i++;
-                                   
-                                        
                                     }
                                     i = 3;
                                     while (i < NumeroConectados + 3)
                                     {
                                         try
                                         {
-                                          
                                             this.Invoke(new Action(() =>
                                             {
                                                 dataGridView1.Rows[i - 3].Cells[0].Value = nombre;
                                             }));
-                                            
                                             i++;
                                             nombre = trozos[i];
-
-
                                         }
-                                        catch
+                                        catch (IndexOutOfRangeException ex)
                                         {
-                                            IndexOutOfRangeException ex;
-                                            break;
+                                           string err = ex.Message;
+                                           break;
                                         }
                                     }
                                 }
                             }
-
                             if (mensaje == "6/1")//esta situacion no se puede dar nunca ya que almenos siempre estara conectado el que hace la peticion.
                             {
                                 this.Invoke(new Action(() =>
@@ -305,7 +343,6 @@ namespace Proyecto_SO
                                     label6.Text = "No hay nadie conectado";
                                     label6.Visible = true;
                                 }));
-                             
                             }
                             break;
                         }
@@ -326,8 +363,7 @@ namespace Proyecto_SO
                                 string nombre;
                                 partida = Convert.ToInt32(trozos[2]);//7/0/nombre
                                 nombre = trozos[3];
-
-                                if (MessageBox.Show(label5.Text + " Has sido invitado a jugar por: " + nombre, "Invitacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                if (MessageBox.Show(NOMBRE.Text + " Has sido invitado a jugar por: " + nombre, "Invitacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 {
                                     peticion = "8/" + partida + "/0";
                                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(peticion);
@@ -340,10 +376,9 @@ namespace Proyecto_SO
                                     server.Send(msg);
                                 }
                             }
-
                             break;
                         }
-                        case 8://aceptar/rechazar
+                    case 8://aceptar/rechazar
                         {
                             string decision = trozos[1];
                             partida = Convert.ToInt32(trozos[2]);
@@ -351,8 +386,6 @@ namespace Proyecto_SO
                             {
                                 this.Invoke(new Action(() =>
                                 {
-
-
                                     label6.Text = "El jugador " + invitado + " ha aceptado";
                                     label6.Visible = true;
                                     label7.Visible = true;
@@ -363,7 +396,7 @@ namespace Proyecto_SO
                                     label8.Text = null;
                                     label9.Text = null;
                                     label10.Text = null;
-                                    
+
                                     label1.Visible = false;
                                     label2.Visible = false;
                                     label3.Visible = false;
@@ -383,27 +416,22 @@ namespace Proyecto_SO
                                     NOMBRE.Visible = false;
                                     CONTRASEÑA.Visible = false;
                                     PARAMETRO.Visible = false;
-
-
                                     try
                                     {
-                                        label7.Text = "J1 " +trozos[3];
+                                        label7.Text = "J1 " + trozos[3];
                                         label8.Text = "J2 " + trozos[4];
                                         label9.Text = "J3 " + trozos[5];
                                         label10.Text = "J4 " + trozos[6];
+                                        jugadores = "J1/" + trozos[3] + "/J2/" + trozos[4] + "/J3/" + trozos[5] +"/J4/" + trozos[6] + "/";
+
                                     }
                                     catch (IndexOutOfRangeException ex)
                                     {
-                                        //XDD I DO NOT GIVE HALF A FLYING FUCK
+                                        string err = ex.Message;
                                     }
-                                   
-                                    
-                                    TXTCHAT.Visible = true;
-                                    BTNChat.Visible = true;
+                                        TXTCHAT.Visible = true;
+                                        BTNChat.Visible = true;
                                 }));
-                                
-
-
                             }
                             if (mensaje == "8/1")
                             {
@@ -418,7 +446,6 @@ namespace Proyecto_SO
                         }
                     case 9://chat
                         {
-                            //AQUI CUANDO RECIVE UN MENSAJE, ESCRIBE EL TEXTO EN "CHAT1", EL RESTO LO VA SUBIENDO HACIA ARRIBA AND FUCK IT CUANDO LLEGA AL CHAT6
                             string chat = trozos[1];//9/mensaje
                             this.Invoke(new Action(() =>
                             {
@@ -454,85 +481,105 @@ namespace Proyecto_SO
                                     CHAT6.Visible = true;
                                 }
                             }));
-                            
                             break;
+                        }
+                    case 10:
+                        {//10/0
 
+                            f2 = new Form2(this);
+                            string[] jugador = jugadores.Split("/");
+                            
+                            if (NOMBRE.Text == jugador[1]) 
+                            {
+                                f2.teamColor = 0;
+                            }
+                            if (NOMBRE.Text == jugador[3]) 
+                            {
+                                f2.teamColor = 1;
+                            }
+                            if (NOMBRE.Text == jugador[5]) 
+                            {
+                                f2.teamColor = 2;
+                            }
+                            if (NOMBRE.Text == "Maria")
+                            {
+                                f2.teamColor = 3;
+                            }
+
+                            ThreadStart ts2 = delegate { f2.ShowDialog(); };
+                            atender2 = new Thread(ts2);
+                            atender2.Start();
+
+                            break;
+                        }
+                    case 11:
+                        {//11/nºfixa/nºposicion/bool casa/n/dado/comido
+
+                            if (trozos[1] == "99")
+                            {
+                                if (_n == 3)
+                                {
+                                    _n = 0;
+                                }
+                                else
+                                {
+                                    _n++;
+                                }
+                                
+                                f2.Servidor(16, 0, 0, false,  res);
+
+                                if (_n == f2.teamColor)
+                                {
+                                    f2.setToken(true);
+                                    f2.DadoVisible(true);
+                                }
+                                else
+                                {
+                                    f2.setToken(false);
+                                    f2.DadoVisible(false);
+                                }
+                            }
+                            else
+                            {
+                                int equipo = Convert.ToInt32(trozos[1]);
+                                int ficha = Convert.ToInt32(trozos[2]);
+                                int posicion = Convert.ToInt32(trozos[3]);
+                                bool casa = Convert.ToBoolean(trozos[4]);
+                                _n = Convert.ToInt32(trozos[5]);
+                                res = Convert.ToInt32(trozos[6]);
+                                
+                                if (_n == f2.teamColor)
+                                {
+                                    f2.setToken(true);
+                                    f2.DadoVisible(true);
+                                }
+                                else
+                                {
+                                    f2.setToken(false);
+                                    f2.DadoVisible(false);
+                                }
+                                f2.Servidor(ficha, equipo, posicion, casa, res);
+                            }
+                            break;
+                        }
+                    case 12:
+                        {
+                            MessageBox.Show("Cuenta Eliminada correctamente");
+                            this.Invoke(new Action(()=>
+                            {
+                                this.Close();
+                            }
+                            ));
+                            break;
                         }
                 }
             }
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            label1.Visible= false;
-            label2.Visible= false;
-            label3.Visible = false;
-            label4.Visible = false;
-            label5.Visible= false;
-            label6.Visible= false;
-            label7.Visible = false;
-            label8.Visible = false;
-            label9.Visible = false;
-            label10.Visible = false;
-            label11.Visible = false;
-
-            label11.Text = null;
-
-            CHAT1.Visible= false;
-            CHAT2.Visible= false;
-            CHAT3.Visible= false;
-            CHAT4.Visible= false;
-            CHAT5.Visible= false;
-            CHAT6.Visible= false;
-
-            CHAT1.Text = null;
-            CHAT2.Text = null;
-            CHAT3.Text = null;
-            CHAT4.Text = null;
-            CHAT5.Text = null;
-            CHAT6.Text = null;
-
-            //botones
-            BTNinvitar.Visible= false;
-            LOGIN.Visible = false;
-            SIGNIN.Visible = false;
-            QUERY1.Visible = false;
-            QUERY2.Visible = false;
-            QUERY3.Visible = false;
-            DISSCONECT.Visible = false;
-            CONECTADOS.Visible = false;
-            ACEPTAR.Visible = false;
-            ACEPTAR.Text = "ACEPTAR";
-            RECHAZAR.Visible = false;
-            RECHAZAR.Text = "RECHAZAR";
-            BTNChat.Visible = false;
-            //
-            this.BackColor = Color.FromArgb(33, 166, 255);
-            dataGridView1.BackgroundColor = Color.FromArgb(87, 13, 252);
-            //textbox
-            NOMBRE.Visible = false;
-            CONTRASEÑA.Visible = false;
-            PARAMETRO.Visible = false;
-            TXTCHAT.Visible = false;
-            //datagriedview
-            dataGridView1.ReadOnly= true;
-  
-            dataGridView1.Visible = false;//si pongo esto luego no puedo hacerlo visible
-            //CHECKBOX 
-            INVITAR.Text = "Invitar";
-            INVITAR.Visible = false;
-            
-            dataGridView1.Columns.Add("NombreConectados", "Conectados");
-    
-
-
-
-        }
-
         private void LOGIN_Click(object sender, EventArgs e)
         {
 
 
-            string mensaje = "1/" + NOMBRE.Text + "/" + CONTRASEÑA.Text + "/";//no estoy seguro de si hay que poner una barra al final o no (da igual si esta o no)
+            string mensaje = "1/" + NOMBRE.Text + "/" + CONTRASEÑA.Text + "/";
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
@@ -545,7 +592,6 @@ namespace Proyecto_SO
             }
 
         }
-
         private void SIGNIN_Click(object sender, EventArgs e)
         {
             string mensaje = "2/" + NOMBRE.Text + "/" + CONTRASEÑA.Text;
@@ -561,7 +607,6 @@ namespace Proyecto_SO
             }
            
         }
-
         private void QUERY1_Click(object sender, EventArgs e)
         {
 
@@ -571,8 +616,7 @@ namespace Proyecto_SO
 
            
         }
-
-        private void QUERY2_Click(object sender, EventArgs e)//el parametro sera un valor del 1 al 5
+        private void QUERY2_Click(object sender, EventArgs e)
         {
 
             string mensaje = "4/" + PARAMETRO.Text;
@@ -581,7 +625,6 @@ namespace Proyecto_SO
             
 
         }
-
         private void QUERY3_Click(object sender, EventArgs e)
         {
 
@@ -590,7 +633,6 @@ namespace Proyecto_SO
             server.Send(msg);
            
         }
-
         private void DISSCONECT_Click(object sender, EventArgs e)
         {
             string mensaje = "0/";
@@ -600,9 +642,9 @@ namespace Proyecto_SO
             {
                 atender.Abort();
             }
-            catch 
+            catch (ThreadAbortException ex)
             {
-                ThreadAbortException ex;
+               string err = ex.Message;
             }
             this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
@@ -610,17 +652,43 @@ namespace Proyecto_SO
             
             this.Close();
         }
-
         private void CONNECT_Click(object sender, EventArgs e)//----------------------------------------------------------------------------//
         {
             try
             {
-                IPAddress direc = IPAddress.Parse("192.168.56.102");
-                IPEndPoint ipep = new IPEndPoint(direc, 9059);
+                IPAddress direc = IPAddress.Parse("147.82.117.22");//192.168.56.102
+                IPEndPoint ipep = new IPEndPoint(direc, 50080);
 
                 server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 server.Connect(ipep);
                 
+                DISSCONECT.Visible = true;
+                CONNECT.Visible = false;
+                label1.Visible = true;
+                label2.Visible = true;
+                NOMBRE.Visible = true;
+                CONTRASEÑA.Visible = true;
+                LOGIN.Visible = true;
+                SIGNIN.Visible = true;
+                dataGridView1.Visible = true;
+            }
+            catch (SocketException ex)
+            {
+                MessageBox.Show("no ha sido posible conectarse al servidor" + ex);
+                return;
+            }
+        }
+
+        private void CONNECT_Click()//----------------------------------------------------------------------------//
+        {
+            try
+            {
+                IPAddress direc = IPAddress.Parse("147.83.117.22");
+                IPEndPoint ipep = new IPEndPoint(direc, 50080);
+
+                server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                server.Connect(ipep);
+
                 //MessageBox.Show("Conectado");
                 DISSCONECT.Visible = true;
                 CONNECT.Visible = false;
@@ -651,17 +719,11 @@ namespace Proyecto_SO
         {
             var dgv = sender as DataGridView;
             var check = dgv[e.ColumnIndex, e.RowIndex].Value;//detecta que celda he clickado
-
             string[] invitados = new string[4];
-            
-            
-
-            if (INVITAR.Checked)
+             if (INVITAR.Checked)
             {
                 if (check != null)
                 {
-                    
-                    
                     if (nInvitados > 3)
                     {
                         MessageBox.Show("SOLO SE PUEDE INVITAR A 3 PERSONAS");
@@ -685,11 +747,10 @@ namespace Proyecto_SO
                         invitado = invitado + "-" + invitados[3];
                         nInvitados++;
                     }
-                    //invitado = invitados[0] + "-" + invitados[1] + "-" + invitados[2] + "-" + invitados[3];
-
                     label11.Text = invitado + "-" + nInvitados;//esto se construye correctamente
 
                     DataGridViewCellStyle style = new DataGridViewCellStyle();//cambia de color cuando invitas a alguien
+
                     style.BackColor = Color.FromArgb(191, 12, 242);
                     dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.FromArgb(51, 245, 234);
 
@@ -698,41 +759,65 @@ namespace Proyecto_SO
             }
 
         }
-
-        private void ACEPTAR_Click(object sender, EventArgs e)//este codigo (de momento) es inaccesible(porque los botones no aparecen)
-        {
-            string mensaje = "8/0";
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            
-            RECHAZAR.Visible = false;
-            label4.Visible = false;
-        }
-
-        private void RECHAZAR_Click(object sender, EventArgs e)//este codigo (de momento) es inaccesible(porque los botones no aparecen)
-        {
-            string mensaje = "8/1";
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            ACEPTAR.Visible = false;
-            RECHAZAR.Visible = false;
-            label4.Visible = false;
-        }
-
+    
         private void BTNChat_Click(object sender, EventArgs e)
         {
             string mensaje = "9/" + partida + "/" + TXTCHAT.Text;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
             TXTCHAT.Text = null;
-
         }
 
         private void BTNinvitar_Click(object sender, EventArgs e)
         {
             string mensaje = "7/" + invitado;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
+
+        private void BTNSTART_Click(object sender, EventArgs e)
+        {
+            string mensaje = "10/" + partida;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
+
+        public void jugada()
+        {
+            juegoServidor = f2.enviar;
+            int ND = f2.num_dado;
+            string mensaje = "11/" + partida + "/" + juegoServidor.ToString() + "/" + _n + "/" + ND;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.NOMBRE.Text = "Juan";
+            this.CONTRASEÑA.Text = "password1";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.NOMBRE.Text = "Ana";
+            this.CONTRASEÑA.Text = "password2";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.NOMBRE.Text = "Pedro";
+            this.CONTRASEÑA.Text = "password3";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.NOMBRE.Text = "Maria";
+            this.CONTRASEÑA.Text = "password4";
+        }
+
+        private void DARSEDEBAJA_Click(object sender, EventArgs e)
+        {
+            string mensaje = "12/" + NOMBRE.Text;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }

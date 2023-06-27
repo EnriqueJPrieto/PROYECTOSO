@@ -100,3 +100,22 @@ C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA5\Proyecto SO\Proyecto SO\obj\Debug\ne
 C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA5\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.pdb
 C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA5\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.genruntimeconfig.cache
 C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA5\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\ref\Proyecto SO.dll
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.exe
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.deps.json
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.runtimeconfig.json
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.dll
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\bin\Debug\net6.0-windows\Proyecto SO.pdb
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.AssemblyReference.cache
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto_SO.Form1.resources
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto_SO.Form2.resources
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto_SO.Properties.Resources.resources
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.GenerateResource.cache
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.AssemblyInfoInputs.cache
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.AssemblyInfo.cs
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.csproj.CoreCompileInputs.cache
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.dll
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\refint\Proyecto SO.dll
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.pdb
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\Proyecto SO.genruntimeconfig.cache
+C:\Users\kikep\Desktop\SO\PROYECTO\ENTREGA6\Proyecto SO\Proyecto SO\obj\Debug\net6.0-windows\ref\Proyecto SO.dll
