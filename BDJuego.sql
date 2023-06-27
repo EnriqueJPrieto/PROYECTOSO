@@ -1,9 +1,9 @@
-DROP DATABASE IF EXISTS Juego;
-CREATE DATABASE Juego;
+DROP DATABASE IF EXISTS T4_JUEGO;
+CREATE DATABASE T4_JUEGO;
 
 SET FOREIGN_KEY_CHECKS=0;/*pongo esto porque sino me da un error con las foreign keys en la tabla Participación */
 
-USE Juego;
+USE T4_JUEGO;
 
 create table Jugador(
 	ID int,
