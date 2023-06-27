@@ -291,7 +291,7 @@ void *atenderCliente (void *socket)
 				n = 0;
 				while (n<4)
 				{
-					if(listaP.partidas[partida].aceptado[n] == 1)//se añaden los jugadores que han aceptado la partida
+					if(listaP.partidas[partida].aceptado[n] == 1)//se aÃ±aden los jugadores que han aceptado la partida
 					{
 						sprintf(notificacion, "%s/%s", notificacion, listaP.partidas[partida].jugadores[n].nombre);
 						
@@ -345,7 +345,7 @@ void *atenderCliente (void *socket)
 			}
 		}
 		else if (codigo == 11)
-		{//11/partida/Nºficha/Nºposicion/casa/token
+		{//11/partida/NÂºficha/NÂºposicion/casa/token
 			p = strtok(NULL, "/");
 			partida = atoi(p);
 			
@@ -433,7 +433,7 @@ void *atenderCliente (void *socket)
 }
 
 void LogIn(char nombre[20], char contrasena[20], char respuesta[512])
-{//recibe usuario y contraseña, hace una query en una base de datos, en caso de encontrar respuesta, permite que el usuario se conecte.
+{//recibe usuario y contraseÃ±a, hace una query en una base de datos, en caso de encontrar respuesta, permite que el usuario se conecte.
 	MYSQL *conn;
 	int err;
 	MYSQL_RES *resultado;
@@ -448,14 +448,14 @@ void LogIn(char nombre[20], char contrasena[20], char respuesta[512])
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	conn = mysql_real_connect (conn, "147.83.117.53","root", "mysql", NULL, 0, NULL, 0);
 	if (conn==NULL)
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	err=mysql_query(conn, "use Juego;");//"use database"
+	err=mysql_query(conn, "use T4_JUEGO;");//"use database"
 	if (err!=0)
 	{
 		printf ("Error al acceder a la base de datos %u %s\n",
@@ -484,7 +484,7 @@ void LogIn(char nombre[20], char contrasena[20], char respuesta[512])
 	resultado = mysql_store_result (conn);
 	row = mysql_fetch_row (resultado);
 	
-	if (row == NULL)//contraseña
+	if (row == NULL)//contraseÃ±a
 	{
 		printf ("No se han obtenido datos en la consulta\n");
 		sprintf(respuesta, "1/1/");// 1-Error puede cambiarse por cualquier otra cosa, pero que el cliente lo entienda
@@ -496,7 +496,7 @@ void LogIn(char nombre[20], char contrasena[20], char respuesta[512])
 	}
 }
 void SignIn(char Nombre[20], char contrasena[20], char respuesta[512])
-{//recibe un usuario y contrasña, crea una cuenta nueva en la base de datos y permite que el usuario se conecte
+{//recibe un usuario y contrasÃ±a, crea una cuenta nueva en la base de datos y permite que el usuario se conecte
 	MYSQL *conn;
 	int err;
 	MYSQL_RES *resultado;
@@ -510,14 +510,14 @@ void SignIn(char Nombre[20], char contrasena[20], char respuesta[512])
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	conn = mysql_real_connect (conn, "147.83.117.53","root", "mysql", T4_JUEGO, 0, NULL, 0);
 	if (conn==NULL)
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	err=mysql_query(conn, "use Juego;");//"use database"
+	err=mysql_query(conn, "use T4_JUEGO;");//"use database"
 	if (err!=0)
 	{
 		printf ("Error al acceder a la base de datos %u %s\n",
@@ -614,14 +614,14 @@ void JugadoresQueJueganCon(char nombre[20], char respuesta[512])
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	conn = mysql_real_connect (conn, "147.83.117.53","root", "mysql", T4_JUEGO, 0, NULL, 0);
 	if (conn==NULL)
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	err=mysql_query(conn, "use Juego;");//"use database"
+	err=mysql_query(conn, "use T4_JUEGO;");//"use database"
 	if (err!=0)
 	{
 		printf ("Error al acceder a la base de datos %u %s\n",
@@ -683,14 +683,14 @@ void GanadoresConFichasDeColor(char color[20], char respuesta[512])
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	conn = mysql_real_connect (conn, "147.83.117.53","root", "mysql", T4_JUEGO, 0, NULL, 0);
 	if (conn==NULL)
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	err=mysql_query(conn, "use Juego;");//"use database"
+	err=mysql_query(conn, "use T4_JUEGO;");//"use database"
 	if (err!=0)
 	{
 		printf ("Error al acceder a la base de datos %u %s\n",
@@ -749,14 +749,14 @@ void DarseDeBaja(char nombre[20], char respuesta[512])
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	conn = mysql_real_connect (conn, "147.83.117.53","root", "mysql", T4_JUEGO, 0, NULL, 0);
 	if (conn==NULL)
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	err=mysql_query(conn, "use Juego;");//"use database"
+	err=mysql_query(conn, "use T4_JUEGO;");//"use database"
 	if (err!=0)
 	{
 		printf ("Error al acceder a la base de datos %u %s\n",
@@ -796,14 +796,14 @@ void JugadoresMasVictorias(char fecha[20],char respuesta[512])
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", NULL, 0, NULL, 0);
+	conn = mysql_real_connect (conn, "147.83.117.53","root", "mysql", T4_JUEGO, 0, NULL, 0);
 	if (conn==NULL)
 	{
 		printf ("Error al inicializar la conexion: %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
-	err=mysql_query(conn, "use Juego;");//"use database"
+	err=mysql_query(conn, "use T4_JUEGO;");//"use database"
 	if (err!=0)
 	{
 		printf ("Error al acceder a la base de datos %u %s\n",
@@ -852,7 +852,7 @@ void JugadoresMasVictorias(char fecha[20],char respuesta[512])
 
 
 int Conectar (lConectados *lista, char Nombre[20], int socket)
-{//recibe nombre y socket, añade el nuevo cliente a la lista, devuelve 0 si todo okay, -1 si la lista de clientes esta llena
+{//recibe nombre y socket, aÃ±ade el nuevo cliente a la lista, devuelve 0 si todo okay, -1 si la lista de clientes esta llena
 	if (lista->num == 100)
 	{
 		return -1;
